@@ -1,0 +1,50 @@
+const obtenerInformacion = (materia)=>{
+	materias = {
+		fisica: ["Suarez","matias","lucas","maria","aldana"],
+		programacion: ["Guzman","matias","lucas","maria"],
+		matematicas: ["Rodriguez","matias","lucas","pedro","maria","aldana"],
+		quimica: ["Gimenez","matias","lucas","pedro","maria","aldana"]
+	}
+	if (materias[materia] !== undefined){
+		return [materias[materia],materia,materias];
+	} else {
+		return materias;
+	}
+}
+
+
+const mostrarInformacion = (materia)=>{
+	let informacion = obtenerInformacion(materia);
+
+if (informacion !== false) {
+	profesor = informacion[0][0];
+	alumnos = informacion[0];
+	alumnos.shift();
+	document.write(`El profesor de <b>${informacion[1]}</b> es: <b style='color:red'>${profesor}</b><br> 
+	Los Alumnos son: <b style='color:blue'>${alumnos}</b><br><br>
+	`);
+}
+} 
+
+const cantidadDeClases = (alumno)=>{
+	let informacion = obtenerInformacion();
+	let clasesPresentes = [];
+	let cantidadTotal = 0;
+	for (info in informacion){
+		if (informacion[info].includes(alumno)) {
+			cantidadTotal++;
+			clasesPresentes.push(" "+info);
+		}
+	}
+	return `<b style='color:blue'>${alumno}</b> esta en <b>${cantidadTotal} clases: </b>
+	<b style='color:green'>${clasesPresentes}</b><br>
+	`;
+}
+
+
+mostrarInformacion("fisica");
+mostrarInformacion("programacion");
+mostrarInformacion("matematicas");
+mostrarInformacion("quimica");
+
+document.write(cantidadDeClases("matias"));
